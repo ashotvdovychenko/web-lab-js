@@ -1,0 +1,4 @@
+#area-source, #area-result {
+    min-height: 200px;
+    resize: none;
+}
