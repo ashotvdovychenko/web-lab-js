@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
+.message {
+    background-color: #e0e0e0;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    width: fit-content;
+    max-width: 60%;
+    overflow-wrap: break-word;
+    clear: both;
+}
+
+.main-user {
+    float: right;
+}
+
+.resize-none {
+    resize: none;
+}
