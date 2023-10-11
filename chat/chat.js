@@ -1,32 +1,29 @@
 const messageContainer = document.querySelector("#message-container")
+const firstInput = document.querySelector("#first-input-btn")
+const secondInput = document.querySelector("#second-input-btn")
 
-function addFirstUserMessage() {
-    const messageElement = createMessageElement("first-input");
-    messageElement.className += " main-user";
-    displayMessageInContainer(messageElement)
-    document.getElementById("first-input").value = "";
-}
+firstInput.addEventListener('click', addUserMessage)
+secondInput.addEventListener('click', addUserMessage)
 
-function addSecondUserMessage() {
-    const messageElement = createMessageElement("second-input");
-    displayMessageInContainer(messageElement)
-    document.getElementById("second-input").value = "";
+function addUserMessage(event) {
+    const inputId = event.target.dataset.input;
+    const messageElement = createMessageElement(inputId);
+    if (inputId === "first-input") {
+        messageElement.classList.add("main-user")
+    }
+    messageContainer.appendChild(messageElement);
+    document.getElementById(inputId).value = "";
 }
 
 function createMessageElement(inputId) {
     const messageText = document.getElementById(inputId).value;
+    const newMessageElement = document.createElement("div");
+    const newMessageText = document.createElement("p");
+    newMessageText.textContent = messageText;
     if (messageText.trim() === "") {
         return
     }
-    const newMessageElement = document.createElement("div");
     newMessageElement.className = "message";
-    const newMessageText = document.createElement("p");
-    newMessageText.textContent = messageText;
-
     newMessageElement.appendChild(newMessageText);
     return newMessageElement;
-}
-
-function displayMessageInContainer(messageElement) {
-    messageContainer.appendChild(messageElement);
 }
