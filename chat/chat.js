@@ -1,28 +1,36 @@
-const messageContainer = document.querySelector("#message-container")
-const firstInput = document.querySelector("#first-input-btn")
-const secondInput = document.querySelector("#second-input-btn")
+const ws = new WebSocket('ws://localhost:8080')
+const firstInputButton = document.querySelector("#input-btn")
+const firstInput = document.querySelector("#input")
+const messageContainer = document.querySelector("#message-container");
 
-firstInput.addEventListener('click', addUserMessage)
-secondInput.addEventListener('click', addUserMessage)
+firstInputButton.addEventListener('click', addUserMessage)
+
+ws.onmessage = (webSocketMessage) => {
+    const webSocketData = JSON.parse(webSocketMessage.data);
+    messageContainer.innerHTML = '';
+    webSocketData.messages.forEach(message => {
+        const messageElement = createMessageElement(message);
+        if (message.user === webSocketData.mainUser) {
+            messageElement.classList.add("main-user")
+        }
+        messageContainer.appendChild(messageElement);
+        messageElement.scrollIntoView();
+    })
+}
 
 function addUserMessage(event) {
-    const inputId = event.target.dataset.input;
-    const messageElement = createMessageElement(inputId);
-    if (inputId === "first-input") {
-        messageElement.classList.add("main-user")
+    if (firstInput.value === "") {
+        return
     }
-    messageContainer.appendChild(messageElement);
+    const inputId = event.target.dataset.input;
+    ws.send(JSON.stringify(firstInput.value))
     document.getElementById(inputId).value = "";
 }
 
-function createMessageElement(inputId) {
-    const messageText = document.getElementById(inputId).value;
+function createMessageElement(message) {
     const newMessageElement = document.createElement("div");
     const newMessageText = document.createElement("p");
-    newMessageText.textContent = messageText;
-    if (messageText.trim() === "") {
-        return
-    }
+    newMessageText.textContent = `${message.user} ${message.text}`;
     newMessageElement.className = "message";
     newMessageElement.appendChild(newMessageText);
     return newMessageElement;
