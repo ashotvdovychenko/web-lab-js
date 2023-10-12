@@ -1,3 +1,5 @@
+const rectangle = document.querySelector("#rectangle")
+
 function calculateRectangle() {
     const length = parseFloat(document.getElementById("length").value);
     const width = parseFloat(document.getElementById("width").value);
@@ -10,13 +12,14 @@ function calculateRectangle() {
     }
 
     displayRectangleCalculation(area, perimeter, diagonal);
+    setLengthWidthLabels(length, width)
 }
 
 function validate(length, width){
     if (isNaN(length) || isNaN(width)) {
-        document.getElementById("areaResult").textContent = "";
-        document.getElementById("perimeterResult").textContent = "";
-        document.getElementById("diagonalResult").textContent = "";
+        document.getElementById("area-result").textContent = "";
+        document.getElementById("perimeter-result").textContent = "";
+        document.getElementById("diagonal-result").textContent = "";
         document.getElementById("error-message").textContent = "";
         return false;
     }
@@ -30,9 +33,14 @@ function validate(length, width){
 }
 
 function displayRectangleCalculation(area, perimeter, diagonal){
-    document.getElementById("areaResult").textContent = area.toFixed(2);
-    document.getElementById("perimeterResult").textContent = perimeter.toFixed(2);
-    document.getElementById("diagonalResult").textContent = diagonal.toFixed(2);
+    document.getElementById("area-result").textContent = area.toFixed(2);
+    document.getElementById("perimeter-result").textContent = perimeter.toFixed(2);
+    document.getElementById("diagonal-result").textContent = diagonal.toFixed(2);
+}
+
+function setLengthWidthLabels(length, width) {
+    rectangle.dataset.length = length;
+    rectangle.dataset.width = width;
 }
 
 document.getElementById("length").addEventListener("input", calculateRectangle);
