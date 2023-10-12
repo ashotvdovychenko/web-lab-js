@@ -1,0 +1,27 @@
+body {
+    background-color: #fff1bf;
+}
+
+.rectangle {
+    width: 40vw;
+    height: 200px;
+    border: 3px solid black;
+    position: relative;
+}
+
+.rectangle::before {
+    content: attr(data-length);
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.rectangle::after {
+    content: attr(data-width);
+    position: absolute;
+    top: 50%;
+    left: -15px;
+    transform: rotate(-90deg);
+    translate: -50% -50%;
+}
