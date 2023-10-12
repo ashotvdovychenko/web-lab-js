@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+}
+
+.body {
+    background-color: #fff1bf;
+}
+
+.message-container {
+    height: 60vh;
+}
+
+.message {
+    background-color: #e0e0e0;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    width: fit-content;
+    max-width: 60%;
+    overflow-wrap: break-word;
+    clear: both;
+}
+
+.main-user {
+    float: right;
+    background-color: #ffa500;
+}
+
+.resize-none {
+    resize: none;
+}
