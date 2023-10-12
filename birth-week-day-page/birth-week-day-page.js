@@ -23,3 +23,5 @@ function displayDayOfWeek(daysOfWeek ,dayOfWeek, result){
 }
 
 handleSourceChange(source, result, daysOfWeek);
+
+document.getElementById("birthdate").setAttribute("max", new Date().toLocaleDateString("fr-ca"));
