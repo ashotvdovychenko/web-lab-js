@@ -1,12 +1,25 @@
-function calculateDay() {
-    const birthdate = new Date(document.getElementById('birthdate').value);
-    const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const source = document.querySelector("#birthdate");
+const result = document.querySelector("#result");
+const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-    const a = 14 - Math.floor(birthdate.getUTCMonth() / 12);
-    const y = birthdate.getUTCFullYear() - a;
-    const m = birthdate.getUTCFullYear() - a;
-
-    const dayOfWeek = (birthdate.getUTCDay() + y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) + Math.floor((31 * m) / 12)) % 7;
-
-    document.getElementById("result").textContent = daysOfWeek[dayOfWeek];
+function handleSourceChange(source, result, daysOfWeek){
+    source.addEventListener("input", (event) => {
+        const birthdate = new Date(event.target.value);
+        const dayOfWeek = calculateDay(birthdate);
+        displayDayOfWeek(daysOfWeek, dayOfWeek, result);
+    });
 }
+
+function calculateDay(birthdate) {
+    const a = Math.floor((15 - birthdate.getMonth()) / 12);
+    const y = birthdate.getFullYear() - a;
+    const m = birthdate.getMonth() + 12 * a - 1;
+
+    return (birthdate.getDate() + y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) + Math.floor((31 * m) / 12)) % 7;
+}
+
+function displayDayOfWeek(daysOfWeek ,dayOfWeek, result){
+    result.textContent = daysOfWeek[dayOfWeek];
+}
+
+handleSourceChange(source, result, daysOfWeek);
