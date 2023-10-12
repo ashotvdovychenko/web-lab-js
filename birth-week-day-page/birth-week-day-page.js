@@ -11,12 +11,17 @@ function handleSourceChange(source, result, daysOfWeek){
 }
 
 function calculateDay(birthdate) {
-    const a = Math.floor((15 - birthdate.getMonth()) / 12);
-    const y = birthdate.getFullYear() - a;
-    const m = birthdate.getMonth() + 12 * a - 1;
-
-    return (birthdate.getDate() + y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) + Math.floor((31 * m) / 12)) % 7;
+    return birthdate.getDay();
 }
+
+// Unstable algorithm
+// function calculateDay(birthdate) {
+//     const a = Math.floor((15 - birthdate.getMonth()) / 12);
+//     const y = birthdate.getFullYear() - a;
+//     const m = birthdate.getMonth() + 12 * a - 1;
+//
+//     return (birthdate.getDate() + y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) + Math.floor((31 * m) / 12)) % 7;
+// }
 
 function displayDayOfWeek(daysOfWeek ,dayOfWeek, result){
     result.textContent = daysOfWeek[dayOfWeek];
