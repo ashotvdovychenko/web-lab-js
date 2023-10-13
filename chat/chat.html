@@ -12,12 +12,30 @@
 </head>
 <body class="body container">
     <div class="d-flex justify-content-center align-items-center vh-100">
-        <div class="card-body m-auto bg-white pt-3">
-            <h1 class="card-title ps-4 pb-3">Chat</h1>
-            <div class="message-container overflow-auto bg-white" id="message-container"></div>
-            <div class="d-flex text-white">
-                <textarea class="textarea form-control rounded-0 resize-none" name="first-input" id="input" placeholder="Message text"></textarea>
-                <button class="btn btn-primary rounded-0" id="input-btn" data-input="input">Send</button>
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-pills card-header-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../chat/chat.html">Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../birth-week-day-page/birth-week-day-page.html">Birthday</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../transliteration-page/transliteration-page.html">Transliteration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../rectangle-page/rectangle-page.html">Rectangle</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body bg-white pt-3">
+                <h1 class="card-title ps-4 pb-3">Chat</h1>
+                <div class="message-container overflow-auto bg-white" id="message-container"></div>
+                <div class="d-flex text-white">
+                    <textarea class="textarea form-control rounded-0 resize-none" name="first-input" id="input" placeholder="Message text"></textarea>
+                    <button class="btn btn-primary rounded-0" id="input-btn" data-input="input">Send</button>
+                </div>
             </div>
         </div>
     </div>
