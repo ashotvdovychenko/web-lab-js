@@ -23,15 +23,26 @@ function addUserMessage(event) {
         return
     }
     const inputId = event.target.dataset.input;
-    ws.send(JSON.stringify(firstInput.value))
+    ws.send(JSON.stringify(firstInput.value));
     document.getElementById(inputId).value = "";
 }
 
 function createMessageElement(message) {
     const newMessageElement = document.createElement("div");
+    const newMessageUser = document.createElement("div");
     const newMessageText = document.createElement("p");
-    newMessageText.textContent = `${message.user} ${message.text}`;
+    const newMessageTime = document.createElement("div");
+    newMessageUser.textContent = `${message.user}`;
+    newMessageText.textContent = `${message.text}`;
+    newMessageTime.textContent = formatTime(message.date);
     newMessageElement.className = "message";
+    newMessageElement.appendChild(newMessageUser);
     newMessageElement.appendChild(newMessageText);
+    newMessageElement.appendChild(newMessageTime);
     return newMessageElement;
+}
+
+function formatTime(unixTimestamp) {
+    const date = new Date(unixTimestamp);
+    return `${date.getHours()}:${date.getMinutes()}`;
 }

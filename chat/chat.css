@@ -21,9 +21,22 @@
     clear: both;
 }
 
+.message p {
+    margin-bottom: 0;
+}
+
+.message div {
+    opacity: .7;
+}
+
 .main-user {
     float: right;
     background-color: #ffa500;
+}
+
+.main-user div {
+    width: 100%;
+    text-align: right;
 }
 
 .resize-none {
