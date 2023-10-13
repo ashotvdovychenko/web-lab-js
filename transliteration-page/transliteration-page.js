@@ -85,7 +85,7 @@ function displayTransliteratedOutput(transliteratedString, output) {
 
 function getTransliteratedString(sourceString, transliterateMap) {
     return [...sourceString]
-        .map(sourceLetter => transliterateMap[sourceLetter] || sourceLetter)
+        .map(sourceLetter => transliterateMap[sourceLetter] ?? sourceLetter)
         .join('');
 }
 
