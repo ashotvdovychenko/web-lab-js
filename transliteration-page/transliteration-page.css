@@ -2,3 +2,7 @@
     min-height: 200px;
     resize: none;
 }
+
+.body {
+    background-color: #fff1bf;
+}

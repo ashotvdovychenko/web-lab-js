@@ -10,14 +10,36 @@
     <link rel="stylesheet" href="./transliteration-page.css">
     <script defer src="./transliteration-page.js"></script>
 </head>
-<body class="bg-primary container text-white">
-<div class="row mb-5">
-    <label for="area-source">Source:</label>
-    <textarea class="form-control" name="area-source" id="area-source" placeholder="Source text"></textarea>
-</div>
-<div class="row">
-    <label for="area-result">Result:</label>
-    <textarea class="form-control" name="area-result" id="area-result" placeholder="Result text" readonly></textarea>
-</div>
+<body class="body container">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-pills card-header-pills">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../chat/chat.html">Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../birth-week-day-page/birth-week-day-page.html">Birthday</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="">Transliteration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../rectangle-page/rectangle-page.html">Rectangle</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body bg-white pt-3">
+                <div class="row mb-4">
+                    <label for="area-source">Source:</label>
+                    <textarea class="form-control" name="area-source" id="area-source" placeholder="Source text"></textarea>
+                </div>
+                <div class="row">
+                    <label for="area-result">Result:</label>
+                    <textarea class="form-control" name="area-result" id="area-result" placeholder="Result text" readonly></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
